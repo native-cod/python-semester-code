@@ -12,5 +12,7 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
-
+value = 20
+if isinstance(value, int):
+    print(type(value))
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
