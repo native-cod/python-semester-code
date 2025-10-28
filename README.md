@@ -1,8 +1,8 @@
 # Project name
-Python code 4th semester
+Python code 3rd semester
 
 # Description
-some python code for 4th university semester in OOP
+some python code for 3rd university semester in OOP
 
 ## Features
 - Simple Calculator with custom tkinter
