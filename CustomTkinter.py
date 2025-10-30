@@ -1,7 +1,9 @@
+import math
+
 import customtkinter as ctk
 
 root = ctk.CTk()
-root.geometry("450x450")
+root.geometry("470x470")
 root.title("Learning Custom Tkinter")
 root.resizable(False, False)
 
@@ -16,15 +18,21 @@ gender_frame = ctk.CTkFrame(root, fg_color="transparent")
 male = ctk.CTkRadioButton(gender_frame, text="Male", value="Male", variable=gender_variable, state="normal")
 female = ctk.CTkRadioButton(gender_frame, text="Female", value="Female", variable=gender_variable, state="normal")
 
+Age = 25
+
 
 def segment(value):
     if value == list_button[1]:
         gender_variable.set("none selected")
         male.configure(state="disabled")
         female.configure(state="disabled")
+        age_label.configure(text="")
+        age_slider.configure(state="disabled")
     else:
         male.configure(state="normal")
         female.configure(state="normal")
+        age_label.configure(text=f"Age {Age}")
+        age_slider.configure(state="normal")
 
 
 controls = ctk.CTkSegmentedButton(root, values=list_button, command=segment)
@@ -46,8 +54,20 @@ password_label = ctk.CTkLabel(fill_frame, text="Enter Password :", pady=5).grid(
 password_entry = ctk.CTkEntry(fill_frame, placeholder_text="Password")
 password_entry.grid(row=2, column=1, pady=5)
 
+age_label = ctk.CTkLabel(root, text=f"Age :{Age}")
+age_label.pack()
 
-gender_frame.pack(pady="10")
+
+def showAge(value):
+    global Age
+    Age = math.floor(value)
+    age_label.configure(text=f"Age :{Age}")
+
+
+age_slider = ctk.CTkSlider(root, from_=18, to=90, command=lambda value: showAge(value))
+age_slider.set(25)
+age_slider.pack()
+gender_frame.pack(pady="15")
 
 male.pack(side="left", padx=5)
 female.pack()
